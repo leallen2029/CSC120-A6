@@ -1,5 +1,5 @@
-import static org.junit.Assert.*;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class ShopTest {
     /**
@@ -8,7 +8,7 @@ public class ShopTest {
     @Test
     public void testComputerPriceConstructor() {
         Computer c = new Computer("Test", "Intel", 256, 16, "macOS", 2020, 800);
-        assertEquals("Price should be 800 (passed value), not hardcoded 0", 800, c.price);
+        org.junit.Assert.assertEquals("Price should be 800 (passed value), not hardcoded 0", 800, c.price);
     }
     /**
      * Bug 2: hardcodes memory as 16 instead of using memory parameter.
@@ -16,8 +16,7 @@ public class ShopTest {
     @Test
     public void testComputerMemoryConstructor() {
         Computer c = new Computer("Test", "Intel", 256, 32, "macOS", 2020, 500);
-        assertEquals("Memory should be 32 (passed value), not hardcoded 16",
-                     32, c.memory);
+        assertEquals("Memory should be 32 (passed value), not hardcoded 16", 32, c.memory);
     }
 
     /**
@@ -81,12 +80,16 @@ public class ShopTest {
      * refurbish() sets price to 2500 for 2000–2011 computers. This doesn't follow the pattern of price being higher than newer computers.
      */
     @Test
-    public void testRefurbishPriceTier2000to2011() {
+    public void testRefurbishPrice2000to2011() {
         ResaleShop shop = new ResaleShop();
         Computer old = new Computer("2005 ThinkPad", "Intel", 80, 2, "Windows XP", 2005, 50);
         shop.buy(old);
         shop.refurbish(old, "None");
-        assertTrue("A 2005 computer should be priced less than a 2019 computer after refurbish",
-                   old.price < 1000);
+        assertTrue("A 2005 computer should be priced less than a 2019 computer after refurbish", old.price < 1000);
+    }
+
+    @Test
+    public void alreadyInInventory(){
+
     }
 }
