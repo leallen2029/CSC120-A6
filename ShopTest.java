@@ -8,7 +8,7 @@ public class ShopTest {
     @Test
     public void testComputerPriceConstructor() {
         Computer c = new Computer("Test", "Intel", 256, 16, "macOS", 2020, 800);
-        org.junit.Assert.assertEquals("Price should be 800 (passed value), not hardcoded 0", 800, c.price);
+        assertEquals("Price should be 800 (passed value), not hardcoded 0", 800, c.price);
     }
     /**
      * Bug 2: hardcodes memory as 16 instead of using memory parameter.
