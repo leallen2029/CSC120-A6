@@ -32,7 +32,7 @@ Failed unit test: testRefurbishPrice2000to2011()
 
 ## Bug 9
 Brief description: ResaleShop() begins with a computer already in inventory 
-Failed unit test: ResaleShop() 
+Failed unit test: testResaleShopInventory() 
 
 ## Bug 10
 Brief description: buy() ignores the computer passed in and instead creates and adds a hardcoded computer.
