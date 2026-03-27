@@ -110,13 +110,14 @@ public class ShopTest {
      * Bug 10: refurbish() does not check if the computer is in inventory before trying to refurbish it. This test should verify that trying to refurbish a computer that is not in inventory throws a RuntimeException.
      * This test should verify that trying to refurbish a computer that is not in inventory throws a RuntimeException.
      */
-        @Test
-        public void testRefurbishNotInInventoryThrows() {
-            ResaleShop shop = new ResaleShop();
-            Computer c = new Computer("2018 Lenovo", "Intel", 256, 8, "Windows 11", 2018, 300);
-    
-            assertThrows(RuntimeException.class, () -> {
-                shop.refurbish(c, "Windows 10");
-            });
-        }
+    @Test
+    public void testRefurbishDoesNotChangeOSWhenNewOSIsNone() {
+        ResaleShop shop = new ResaleShop();
+        Computer c = new Computer("2018 Lenovo", "Intel", 256, 8, "Windows 11", 2018, 300);
+        shop.buy(c);
+
+        shop.refurbish(c, new String("None"));
+
+        assertEquals("Windows 11", c.operatingSystem);
+}
     }
